@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WIFI Manager</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/login" class="btn btn-link">Zurück</a>
+            <h2>Hier kannst du ein Netzwerk aus der Liste wählen oder den Namen eines Netzwerks eingeben</h2>
+        </div>
+        <div id="connect-form">
+            <input type="text" id="selected-ssid" placeholder="Network-Name" class="form-control">
+            <input type="password" id="wifi-password" placeholder="Passwort" class="form-control">
+            <button onclick="connectToNetwork()" class="btn btn-connect">Verbinden</button>
+        </div>
+        <button onclick="searchNetworks()" class="btn btn-search">Netzwerke suchen</button>
+        
+        <div id="network-list-wrapper">
+            <ul id="network-list">
+                <!-- Netzwerke werden hier aufgelistet -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

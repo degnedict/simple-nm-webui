@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    max-width: 600px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.btn-link {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-link:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+#network-list-wrapper {
+    height: 250px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+#network-list-wrapper::-webkit-scrollbar {
+    width: 20px;
+}
+
+#network-list-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#network-list-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+#network-list-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#network-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#network-list li {
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    padding: 15px;
+    text-align: left;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#connect-form {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-search {
+    background-color: #007bff; /* Farbe des Such-Buttons */
+    color: white;
+}
+
+.btn-connect {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-search:hover {
+    background-color: #0056b3;
+}
+
+.btn-connect:hover {
+    opacity: 0.8;
+}
