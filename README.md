@@ -7,10 +7,10 @@ A webUI for network-manager to connect to wifi networks using the Touchscreen
 
 I am utilizing Apache, and I have simply transferred the folder into a directory within my `/var/www/html`. It can be accessed via `localhost/path/to/folder/index.html`.
 
-Next, install Flask and CORS by executing the following command:
-
-sudo apt install python3-flask python3-flask-cors
-
+Next, install dependencies by executing the following command:
+```
+sudo apt install python3 python3-flask python3-flask-cors dbus
+```
 After this, you are ready to run the Python script. Since it requires permissions to manage the Wi-Fi, you should either run it as root (note that this is risky and should only be done for testing purposes) or assign the necessary permissions to another user. [This](https://superuser.com/questions/1148322/how-to-allow-non-su-user-to-configure-network) is a good resource on this topic.
 
 As long as the Python script is active, you should be able to search for networks and establish connections with them.
@@ -38,7 +38,7 @@ Now enable and start the service using:
 sudo systemctl enable YOUR_SERVICE.service
 sudo systemctl start YOUR_SERVICE.service
 ```
-now check if the serive is running:
+now check if the service is running:
 ```
 sudo systemctl status YOUR_SERVICE.service
 ```
