@@ -8,15 +8,15 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="/login" class="btn btn-link">Zurück</a>
-            <h2>Hier kannst du ein Netzwerk aus der Liste wählen oder den Namen eines Netzwerks eingeben</h2>
+            <a href="/login" class="btn btn-link">Back</a>
+            <h2>Choose a network from the list or type in an SSID</h2>
         </div>
         <div id="connect-form">
-            <input type="text" id="selected-ssid" placeholder="Network-Name" class="form-control">
-            <input type="password" id="wifi-password" placeholder="Passwort" class="form-control">
-            <button onclick="connectToNetwork()" class="btn btn-connect">Verbinden</button>
+            <input type="text" id="selected-ssid" placeholder="SSID" class="form-control">
+            <input type="password" id="wifi-password" placeholder="Password" class="form-control">
+            <button onclick="connectToNetwork()" class="btn btn-connect">Connect</button>
         </div>
-        <button onclick="searchNetworks()" class="btn btn-search">Netzwerke suchen</button>
+        <button onclick="searchNetworks()" class="btn btn-search">Search Networks</button>
         
         <div id="network-list-wrapper">
             <ul id="network-list">
