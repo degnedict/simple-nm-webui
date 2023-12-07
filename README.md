@@ -1,6 +1,8 @@
 # simple-nm-webui
 A webUI for network-manager to connect to wifi networks using the Touchscreen
 
+![image](https://github.com/degnedict/simple-nm-webui/assets/138185406/1755136a-d4ec-43eb-951e-5a7ea46b7326)
+
 # Installation Instructions
 
 I am utilizing Apache, and I have simply transferred the folder into a directory within my `/var/www/html`. It can be accessed via `localhost/path/to/folder/index.html`.
