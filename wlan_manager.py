@@ -35,4 +35,6 @@ def connect_to_network():
         return jsonify({'result': f'Error connecting. Wrong password?'}), 500
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    host = os.getenv('FLASK_HOST', '127.0.0.1')
+    port = int(os.getenv('FLASK_PORT', 5000))
+    app.run(host=host, port=port)

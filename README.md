@@ -105,6 +105,8 @@ Description=Python WLAN Manager Service
 After=network.target
 
 [Service]
+Environment="FLASK_HOST=0.0.0.0"
+Environment="FLASK_PORT=5000"
 User=USERNAME
 ExecStart=python3 PATH/TO/wlan_manager.py
 Restart=always
