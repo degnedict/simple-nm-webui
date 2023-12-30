@@ -4,26 +4,26 @@ function searchNetworks() {
     fetch('http://localhost:5000/api/wifi-networks')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Netzwerkfehler');
+                throw new Error('Network error');
             }
             return response.json();
         })
         .then(networks => {
             if (!Array.isArray(networks)) {
-                throw new Error('Antwort ist kein Array');
+                throw new Error('Response is not an array');
             }
             const list = document.getElementById('network-list');
             list.innerHTML = '';
             networks.forEach(net => {
                 const item = document.createElement('li');
-                item.textContent = `SSID: ${net.ssid}, Sicherheit: ${net.security}, Signal: ${net.strength}, Band: ${net.band}`;
-                item.onclick = () => selectNetwork(net.ssid);
+                item.textContent = `SSID: ${net.ssid}, Security: ${net.security}, Strength: ${net.strength}, Band: ${net.band}`;
+                item.onclick = () => selectNetwork(net.ssid,net.bssid);
                 list.appendChild(item);
             });
         })
         .catch(error => {
-            console.error('Fehler:', error);
-            alert('Es gab einen Fehler beim Abrufen der Netzwerke.');
+            console.error('Error:', error);
+            alert('There was an error retrieving the networks.');
         });
 }
 
@@ -46,10 +46,10 @@ function connectToNetwork() {
     })
     .then(response => response.json())
     .then(data => {
-        alert('Verbindungsergebnis: ' + data.result);
+        alert('Connection result: ' + data.result);
     })
     .catch(error => {
-        console.error('Fehler:', error);
-        alert('Es gab einen Fehler bei der Verbindung.');
+        console.error('Error:', error);
+        alert('There was an error connecting to the network.');
     });
 }
