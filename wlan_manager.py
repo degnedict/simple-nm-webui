@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 import subprocess
 from flask_cors import CORS
@@ -8,16 +9,16 @@ CORS(app)
 @app.route('/api/wifi-networks')
 def get_wifi_networks():
     try:
-        scan_result = subprocess.check_output(['nmcli', '-t', '-f', 'SSID,SECURITY,BARS,FREQ', 'dev', 'wifi']).decode('utf-8')
+        scan_result = subprocess.check_output(['nmcli', '-t', '-f', 'SSID,BSSID,SECURITY,BARS,FREQ', 'dev', 'wifi']).decode('utf-8').replace('\\:','-')
         networks = []
         for line in scan_result.strip().split('\n'):
-            ssid, security, strength, freq = line.split(':')
+            ssid, bssid, security, strength, freq = line.split(':')
 
             # Remove 'MHz' from freq and convert string to int
             freq = int(freq.replace(' MHz', ''))
 
             band = '5 GHz' if freq >= 5000 else '2.4 GHz'
-            networks.append({'ssid': ssid, 'security': security, 'strength': strength, 'band': band})
+            networks.append({'ssid': ssid, 'bssid': bssid.replace('-',':'), 'security': security, 'strength': strength, 'band': band})
         return jsonify(networks)
     except Exception as e:
         return jsonify({'error': str(e)})
@@ -25,7 +26,7 @@ def get_wifi_networks():
 @app.route('/api/connect', methods=['POST'])
 def connect_to_network():
     data = request.json
-    ssid = data['ssid']
+    network = data['network']
     password = data['password']
 
     try:

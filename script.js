@@ -30,14 +30,15 @@ function searchNetworks() {
         });
 }
 
-function selectNetwork(ssid) {
+function selectNetwork(ssid,bssid) {
     selectedSSID = ssid;
+    selectedBSSID = bssid;
     document.getElementById('selected-ssid').value = ssid;
 }
 
 function connectToNetwork() {
     // Verwenden Sie den Wert aus dem SSID-Feld, falls keine SSID aus der Liste ausgewählt wurde
-    const ssid = selectedSSID || document.getElementById('selected-ssid').value;
+    const network = selectedBSSID ?? document.getElementById('selected-ssid').value;
     const password = document.getElementById('wifi-password').value;
 
     fetch(uri+'/api/connect', {
@@ -45,7 +46,7 @@ function connectToNetwork() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ssid: ssid, password: password })
+        body: JSON.stringify({ network: network, password: password })
     })
     .then(response => response.json())
     .then(data => {
