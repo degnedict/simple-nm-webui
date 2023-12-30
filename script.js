@@ -1,7 +1,10 @@
-let selectedSSID = '';
+let selectedBSSID;
+let protocol = window.location.protocol+'//';
+let hostname = window.location.host;
+let uri = protocol+hostname;
 
 function searchNetworks() {
-    fetch('http://localhost:5000/api/wifi-networks')
+    fetch(uri+'/api/wifi-networks')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network error');
@@ -37,7 +40,7 @@ function connectToNetwork() {
     const ssid = selectedSSID || document.getElementById('selected-ssid').value;
     const password = document.getElementById('wifi-password').value;
 
-    fetch('http://localhost:5000/api/connect', {
+    fetch(uri+'/api/connect', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
