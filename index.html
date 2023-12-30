@@ -12,8 +12,8 @@
             <h2>Choose a network from the list or type in an SSID</h2>
         </div>
         <div id="connect-form">
-            <input type="text" id="selected-ssid" placeholder="SSID" class="form-control">
-            <input type="password" id="wifi-password" placeholder="Password" class="form-control">
+            <input type="text" id="selected-ssid" placeholder="SSID" class="form-control" autocomplete="off">
+            <input type="password" id="wifi-password" placeholder="Password" class="form-control" autocomplete="off">
             <button onclick="connectToNetwork()" class="btn btn-connect">Connect</button>
         </div>
         <button onclick="searchNetworks()" class="btn btn-search">Search Networks</button>
