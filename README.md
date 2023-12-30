@@ -3,9 +3,89 @@ A webUI for network-manager to connect to wifi networks using the Touchscreen
 
 ![image](https://github.com/degnedict/simple-nm-webui/assets/138185406/1755136a-d4ec-43eb-951e-5a7ea46b7326)
 
-# Installation Instructions
+# Prerequisites
 
-I am utilizing Apache, and I have simply transferred the folder into a directory within my `/var/www/html`. It can be accessed via `localhost/path/to/folder/index.html`.
+## Webserver
+To access the web-interface a [webserver](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server) is needed.
+Place the content of this repository into a directory the webserver has access e.g. `/var/www/html`.
+
+### apache2
+tbd
+
+### nginx
+#### Install nginx
+```
+apt update && apt install nginx -y
+```
+
+#### Minimal configuration
+```
+server {
+        listen 80 default_server;
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+        location /api/ {
+                # The host and port of the flask application
+                proxy_pass http://localhost:5000/api/;
+        }
+}
+```
+
+#### Restart service
+```
+sudo systemctl restart nginx
+```
+
+## Raspberry Pi
+### Update package list
+```
+sudo apt-get update
+```
+### Make sure network-manager is installed
+```
+sudo apt-get install network-manager
+```
+### Call the raspi-config tool
+```
+sudo raspi-config
+```
+### Enable NetworkManager for Network configuration on the Raspberry Pi
+```
+6 Advanced Options -> AA Network Config -> NetworkManager -> Ok 
+```
+### Reboot
+```
+sudo reboot
+```
+
+### OPTIONAL: Make sure nmcli commands can be executed
+```
+nmcli dev
+```
+**Should list your network devices*
+
+### OPTIONAL: Get state of Wi-Fi-device
+```
+nmcli radio wifi
+```
+
+### OPTIONAL: Identify a WI-Fi Access Point
+```
+nmcli dev wifi list
+```
+
+### OPTIONAL: Connect to Wi-Fi using `BSSID` or `SSID`
+```
+sudo nmcli --ask dev wifi connect network-ssid
+```
+**Using --ask you will be asked to type-in the Wi-Fi password in a password prompt*
+
+
+# Installation Instructions
 
 Next, install dependencies by executing the following command:
 ```
