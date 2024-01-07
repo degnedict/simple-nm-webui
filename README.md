@@ -93,6 +93,16 @@ sudo apt install python3 python3-flask python3-flask-cors dbus
 ```
 After this, you are ready to run the Python script. Since it requires permissions to manage the Wi-Fi, you should either run it as root (note that this is risky and should only be done for testing purposes) or assign the necessary permissions to another user. [This](https://superuser.com/questions/1148322/how-to-allow-non-su-user-to-configure-network) is a good resource on this topic.
 
+Add user to the group netdev
+```
+adduser [USERNAME] netdev
+```
+
+Reload `dbus`
+```
+/etc/init.d/dbus reload
+```
+
 As long as the Python script is active, you should be able to search for networks and establish connections with them.
 
 If everything is functioning correctly, you'll need to configure a service to keep the Python script running in the background continuously.
